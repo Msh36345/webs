@@ -1,51 +1,108 @@
-<style>
-  body {
-    font-family: 'Roboto', sans-serif;
-    background: url('background.jpg') no-repeat center center fixed;
-    background-size: cover;
-  }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Travel Countdown</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: url('background.jpg') no-repeat center center fixed;
+        background-size: cover;
+      }
 
-  h1 {
-    font-family: 'Playfair Display', serif;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* טקסט עם הצללה בולטת */
-  }
+      h1 {
+        font-family: 'Playfair Display', serif;
+      }
 
-  .bg-overlay {
-    background: rgba(0, 0, 0, 0.7); /* הגבר כהות */
-    backdrop-filter: blur(5px); /* טשטוש קל לשיפור המראה */
-  }
-
-  #countdown-container div {
-    background: rgba(0, 0, 0, 0.5); /* כהות גבוהה יותר לטיימר */
-    border-radius: 10px; /* פינות עגולות */
-  }
-</style>
-<body class="flex items-center justify-center min-h-screen text-white">
-  <div class="absolute inset-0 bg-overlay flex flex-col items-center justify-center p-4">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">
-      הונגריה, אנחנו באים!
-    </h1>
-    <div class="text-2xl md:text-4xl mb-8">✈️🇭🇺🎉</div>
-    <div
-      class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center"
-      id="countdown-container"
-    >
-      <div class="text-lg md:text-2xl p-6 rounded-lg shadow-lg">
-        <span class="text-4xl md:text-6xl font-bold" id="days">0</span>
-        <p class="mt-2">Days</p>
-      </div>
-      <div class="text-lg md:text-2xl p-6 rounded-lg shadow-lg">
-        <span class="text-4xl md:text-6xl font-bold" id="hours">0</span>
-        <p class="mt-2">Hours</p>
-      </div>
-      <div class="text-lg md:text-2xl p-6 rounded-lg shadow-lg">
-        <span class="text-4xl md:text-6xl font-bold" id="minutes">0</span>
-        <p class="mt-2">Minutes</p>
-      </div>
-      <div class="text-lg md:text-2xl p-6 rounded-lg shadow-lg">
-        <span class="text-4xl md:text-6xl font-bold" id="seconds">0</span>
-        <p class="mt-2">Seconds</p>
+      #countdown-container div {
+        background: rgba(0, 0, 0, 0.8); /* כהות גבוהה יותר */
+        border-radius: 10px; /* פינות עגולות */
+        border: 1px solid rgba(255, 255, 255, 0.2); /* מסגרת לבנה דקה */
+      }
+    </style>
+  </head>
+  <body class="bg-black bg-opacity-60 flex items-center justify-center min-h-screen text-white">
+    <div class="relative w-full h-full">
+      <!-- Overlay -->
+      <div
+        class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-white p-4"
+      >
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">
+          הונגריה, אנחנו באים!
+        </h1>
+        <div class="text-2xl md:text-4xl mb-8">
+          ✈️🇭🇺🎉
+        </div>
+        <!-- Countdown Timer -->
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center"
+          id="countdown-container"
+        >
+          <div
+            class="text-lg md:text-2xl p-6 rounded-lg shadow-lg"
+          >
+            <span class="text-4xl md:text-6xl font-bold" id="days">0</span>
+            <p class="mt-2">Days</p>
+          </div>
+          <div
+            class="text-lg md:text-2xl p-6 rounded-lg shadow-lg"
+          >
+            <span class="text-4xl md:text-6xl font-bold" id="hours">0</span>
+            <p class="mt-2">Hours</p>
+          </div>
+          <div
+            class="text-lg md:text-2xl p-6 rounded-lg shadow-lg"
+          >
+            <span class="text-4xl md:text-6xl font-bold" id="minutes">0</span>
+            <p class="mt-2">Minutes</p>
+          </div>
+          <div
+            class="text-lg md:text-2xl p-6 rounded-lg shadow-lg"
+          >
+            <span class="text-4xl md:text-6xl font-bold" id="seconds">0</span>
+            <p class="mt-2">Seconds</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</body>
+
+    <script>
+      function updateCountdown() {
+        const eventDate = new Date('February 9, 2025 10:50:00').getTime();
+        const now = new Date().getTime();
+        const distance = eventDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (distance % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerText = days;
+        document.getElementById('hours').innerText = hours;
+        document.getElementById('minutes').innerText = minutes;
+        document.getElementById('seconds').innerText = seconds;
+
+        if (distance < 0) {
+          document.getElementById('countdown-container').innerHTML =
+            '<div class="text-4xl md:text-6xl font-bold">The event has started!</div>';
+        }
+      }
+
+      setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>
