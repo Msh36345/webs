@@ -22,12 +22,23 @@
 
       h1 {
         font-family: 'Playfair Display', serif;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* הצללה לטקסט */
       }
 
       #countdown-container div {
         background: rgba(0, 0, 0, 0.8); /* כהות גבוהה יותר */
         border-radius: 10px; /* פינות עגולות */
         border: 1px solid rgba(255, 255, 255, 0.2); /* מסגרת לבנה דקה */
+      }
+
+      .text-box {
+        background: rgba(0, 0, 0, 0.8); /* רקע כהה לכותרת ואימוג'י */
+        border-radius: 10px; /* פינות עגולות */
+        padding: 10px 20px; /* ריווח פנימי */
+        text-align: center;
+        margin-bottom: 20px; /* ריווח תחתון */
+        border: 1px solid rgba(255, 255, 255, 0.2); /* מסגרת לבנה דקה */
+        display: inline-block;
       }
     </style>
   </head>
@@ -37,11 +48,15 @@
       <div
         class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-white p-4"
       >
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">
-          הונגריה, אנחנו באים!
-        </h1>
-        <div class="text-2xl md:text-4xl mb-8">
-          ✈️🇭🇺🎉
+        <div class="text-box">
+          <h1 class="text-4xl md:text-6xl font-bold">
+            הונגריה, אנחנו באים!
+          </h1>
+        </div>
+        <div class="text-box">
+          <div class="text-2xl md:text-4xl">
+            ✈️🇭🇺🎉
+          </div>
         </div>
         <!-- Countdown Timer -->
         <div
