@@ -16,7 +16,7 @@
     <style>
       body {
         font-family: 'Roboto', sans-serif;
-        background: url('/mnt/data/background.jpeg') no-repeat center center fixed;
+        background: url('background.jpg') no-repeat center center fixed;
         background-size: cover;
       }
 
@@ -43,6 +43,20 @@
 
       .flex-container {
         height: 100vh; /* גובה מלא של המסך */
+      }
+
+      @media (orientation: landscape) {
+        body {
+          background: url('background.jpg') no-repeat center center fixed;
+          background-size: cover;
+        }
+      }
+
+      @media (orientation: portrait) {
+        body {
+          background: url('portrait-background.jpeg') no-repeat center center fixed;
+          background-size: cover;
+        }
       }
     </style>
   </head>
