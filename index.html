@@ -22,43 +22,31 @@
 
       h1 {
         font-family: 'Playfair Display', serif;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* הצללה לטקסט */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
       }
 
       #countdown-container div {
-        background: rgba(0, 0, 0, 0.8); /* כהות גבוהה יותר */
-        border-radius: 10px; /* פינות עגולות */
-        border: 1px solid rgba(255, 255, 255, 0.2); /* מסגרת לבנה דקה */
+        background: rgba(0, 0, 0, 0.6); /* כהות מופחתת ב-25% */
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
       }
 
       .text-box {
-        background: rgba(0, 0, 0, 0.8); /* רקע כהה לכותרת ואימוג'י */
-        border-radius: 10px; /* פינות עגולות */
-        padding: 10px 20px; /* ריווח פנימי */
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+        padding: 10px 20px;
         text-align: center;
-        margin-bottom: 20px; /* ריווח תחתון */
-        border: 1px solid rgba(255, 255, 255, 0.2); /* מסגרת לבנה דקה */
+        margin-bottom: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
         display: inline-block;
       }
     </style>
   </head>
-  <body class="bg-black bg-opacity-60 flex items-center justify-center min-h-screen text-white">
+  <body class="bg-black bg-opacity-60 flex items-end justify-center min-h-screen text-white pb-20">
     <div class="relative w-full h-full">
-      <!-- Overlay -->
       <div
-        class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center text-white p-4"
+        class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-end text-white p-4 pb-20"
       >
-<!--         <div class="text-box">
-          <h1 class="text-4xl md:text-6xl font-bold">
-            !!!היער השחור
-          </h1>
-        </div>
-        <div class="text-box">
-          <div class="text-2xl md:text-4xl">
-            ✈️🇨🇭🇫🇷🇩🇪🎉
-          </div>
-        </div> -->
-        <!-- Countdown Timer -->
         <div
           class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center"
           id="countdown-container"
@@ -93,16 +81,13 @@
 
     <script>
       function updateCountdown() {
-        const eventDate = new Date('March 20, 2025 18:00:00').getTime();        const now = new Date().getTime();
+        const eventDate = new Date('March 20, 2025 18:00:00').getTime();
+        const now = new Date().getTime();
         const distance = eventDate - now;
 
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor(
-          (distance % (1000 * 60 * 60)) / (1000 * 60)
-        );
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         document.getElementById('days').innerText = days;
