@@ -16,7 +16,7 @@
     <style>
       body {
         font-family: 'Roboto', sans-serif;
-        background: url('background.jpg') no-repeat center center fixed;
+        background: url('/mnt/data/background.jpeg') no-repeat center center fixed;
         background-size: cover;
       }
 
@@ -26,7 +26,7 @@
       }
 
       #countdown-container div {
-        background: rgba(0, 0, 0, 0.6); /* כהות מופחתת ב-25% */
+        background: rgba(0, 0, 0, 0.6);
         border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.2);
       }
@@ -40,9 +40,13 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         display: inline-block;
       }
+
+      .flex-container {
+        height: 100vh; /* גובה מלא של המסך */
+      }
     </style>
   </head>
-  <body class="bg-black bg-opacity-60 flex items-end justify-center min-h-screen text-white pb-20">
+  <body class="bg-black bg-opacity-60 flex items-end justify-center flex-container text-white pb-20">
     <div class="relative w-full h-full">
       <div
         class="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-end text-white p-4 pb-20"
